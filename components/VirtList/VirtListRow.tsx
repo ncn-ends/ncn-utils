@@ -1,14 +1,6 @@
 import React, { SetStateAction } from "react";
 import { ListChildComponentProps } from "react-window";
-
-type RowItem = {
-    label: string,
-    isActive: boolean
-};
-export interface RowData {
-    items: RowItem[],
-    toggleItemActive: (index: number) => void
-}
+import { RowData } from "./VirtList.stories";
 
 type VirtListRowProps = ListChildComponentProps<RowData>
 type VirtListRow = React.FC<VirtListRowProps>;
