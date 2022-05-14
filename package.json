@@ -25,9 +25,12 @@
     "@storybook/addon-links": "^6.4.22",
     "@storybook/react": "^6.2.9",
     "@storybook/testing-library": "^0.0.11",
+    "@swc/core": "^1.2.183",
+    "@swc/jest": "^0.2.21",
     "@types/react": "^18.0.9",
     "@types/storybook__react": "^5.2.1",
     "babel-loader": "^8.2.5",
+    "jest": "^28.1.0",
     "typedoc": "^0.22.15"
   }
 }

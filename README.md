@@ -1,0 +1,3 @@
+- Using `Storybook` to develop components in isolation
+- Using `jest` for unit tests
+- Using `swc` for the compiler because it's faster than babel and the default jest compiler

@@ -1,4 +1,4 @@
 module.exports = {
-    entryPoints: ["./components/VirtList/VirtList.tsx"],
+    entryPoints: ["./index.ts"],
     out: "docs"
 }
