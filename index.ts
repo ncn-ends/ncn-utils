@@ -1,7 +1,9 @@
 import { VirtList } from "./components/VirtList/VirtList";
-import { ccl } from './utils/ccl';
+import { NoSsr } from "./components/NoSsr/NoSsr";
+import { ccl } from './utils/ccl/ccl';
 
 export {
     VirtList,
+    NoSsr,
     ccl
 }
