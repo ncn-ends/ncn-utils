@@ -26,6 +26,7 @@ type VirtList = React.FC<VirtListProps>;
  * ```ts
  * <VirtList height={100} width={350} items={items} toggleItemActive={toggleItemActive} />
  * ```
+ * 
  * @param height - Height of the list container in px.
  * @param width - Width of the list container in px.
  * @param items - Array of items to be rendered by the list component
