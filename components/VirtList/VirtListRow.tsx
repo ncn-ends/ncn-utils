@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import { ListChildComponentProps } from "react-window";
 import { RowData } from "./VirtList.stories";
 

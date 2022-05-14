@@ -2,11 +2,8 @@ import React, { memo } from 'react';
 import memoize from 'memoize-one';
 import { areEqual, FixedSizeList as List } from 'react-window';
 import { VirtListRow } from "./VirtListRow";
-import { RowData, StateItem } from "./VirtList.stories";
+import { RowData } from "./VirtList.stories";
 
-// If list items are expensive to render,
-// Consider using PureComponent to avoid unnecessary re-renders.
-// https://reactjs.org/docs/react-api.html#reactpurecomponent
 const Row = memo( VirtListRow, areEqual );
 
 // This helper function memoizes incoming props,
@@ -19,14 +16,22 @@ const createItemData = memoize( ( items, toggleItemActive ) => ( {
     toggleItemActive,
 } ) );
 
-// In this example, "items" is an Array of objects to render,
-// and "toggleItemActive" is a function that updates an item's state.
 type VirtListProps = RowData & { height: number, width: number };
 type VirtList = React.FC<VirtListProps>;
+
+/**
+ * Virtualized list component
+ *
+ * @example How to use
+ * ```ts
+ * <VirtList height={100} width={350} items={items} toggleItemActive={toggleItemActive} />
+ * ```
+ * @param height - Height of the list container in px.
+ * @param width - Width of the list container in px.
+ * @param items - Array of items to be rendered by the list component
+ * @param toggleItemActive - Action to be taken on click. Passed to row component to be handled by row component.
+ */
 export const VirtList: VirtList = ( { height, items, toggleItemActive, width } ) => {
-    // Bundle additional data to list items using the "itemData" prop.
-    // It will be accessible to item renderers as props.data.
-    // Memoize this data to avoid bypassing shouldComponentUpdate().
     const itemData = createItemData( items, toggleItemActive );
 
     return (

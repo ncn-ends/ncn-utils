@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npm test",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "docs:build": "typedoc",
+    "docs:open": "xdg-open ./docs/index.html &>/dev/null"
   },
   "author": "",
   "license": "ISC",
