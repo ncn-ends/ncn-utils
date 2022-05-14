@@ -1,0 +1,87 @@
+:root {
+    --color-accent: #000000;
+    --color-primary: red;
+    --color-secondary: pink;
+
+}
+
+.std-input-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.std-input-group input {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid var(--color-accent);
+    outline: 0;
+    font-size: 120%;
+    color: var(--color-primary);
+    padding: 3px 0;
+    text-indent: 3px;
+    border-radius: 3px;
+    transition: border-color 0.2s;
+    background: transparent;
+    caret-color: var(--color-secondary);
+}
+
+.std-input-group input::placeholder {
+    color: transparent;
+}
+
+.std-input-group input:placeholder-shown ~ label {
+    font-size: 1rem;
+    cursor: text;
+    top: 20px;
+}
+
+
+.std-input-group label {
+    text-indent: 3px;
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: .75rem;
+    color: var(--color-secondary);
+    pointer-events: none;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.std-input-group input:focus {
+    padding-bottom: 3px;
+    border-width: 2px;
+}
+
+.std-input-group input:focus ~ label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: .75rem;
+    color: var(--color-accent);
+}
+
+.std-input-group .validation-indicator {
+    position: absolute;
+    right: 0;
+    bottom: 1px;
+    font-size: 150%;
+
+    & .bad {
+        color: red;
+    }
+
+    & .good {
+        color: green;
+    }
+}
