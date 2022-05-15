@@ -1,5 +1,6 @@
 import { VirtList } from "./VirtList";
 import React, { useState } from "react";
+import { VirtListRow } from "./VirtListRow";
 
 export default {
     title: "VirtList",
@@ -25,7 +26,7 @@ const generateItems = numItems => Array.from( { length: numItems }, _ => ( {
 } ) );
 
 
-const Template = ( { height, width, itemCount } ) => {
+const Template = ( { height, width, itemCount, children } ) => {
     const [items, setItems] = useState( generateItems( itemCount ) );
 
     const toggleItemActive = ( index: number ) => {
@@ -46,6 +47,7 @@ const Template = ( { height, width, itemCount } ) => {
             items={ items }
             toggleItemActive={ toggleItemActive }
             width={ width }
+            children={ children }
         />
     );
 };
@@ -54,5 +56,6 @@ export const Example = Template.bind( {} );
 Example.args = {
     height: 150,
     width: 300,
-    itemCount: 1000
+    itemCount: 1000,
+    children: VirtListRow
 }

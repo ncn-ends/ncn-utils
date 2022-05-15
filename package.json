@@ -1,7 +1,7 @@
 {
   "name": "ncn-utils",
   "version": "1.0.0",
-  "description": "Collection of CSS/JS/TS/React related utils, components, and snippets",
+  "description": "Collection of my commonly used CSS/JS/TS/React related utils and components.",
   "main": "index.js",
   "scripts": {
     "test": "npm test",
