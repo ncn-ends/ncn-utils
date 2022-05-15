@@ -1,5 +1,7 @@
 import { VirtList } from "./components/VirtList/VirtList";
 import { NoSsr } from "./components/NoSsr/NoSsr";
+import { Portal } from "./components/Portal/Portal";
+
 
 import { ccl } from './utils/ccl/ccl';
 
@@ -12,6 +14,7 @@ export {
     useKeyboard,
     VirtList,
     NoSsr,
+    Portal,
     ccl,
     ReactUtils
 }

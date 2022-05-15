@@ -8,7 +8,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "docs:build": "typedoc",
-    "docs:open": "xdg-open ./docs/index.html &>/dev/null"
+    "docs:open": "xdg-open ./docs/index.html &>/dev/null",
+    "docs:run": "npm run docs:build && npm run docs:open"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,7 @@
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.5.1",
     "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
     "@types/storybook__react": "^5.2.1",
     "babel-loader": "^8.2.5",
     "jest": "^28.1.0",
