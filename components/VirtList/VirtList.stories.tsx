@@ -1,51 +1,56 @@
 import { VirtList } from "./VirtList";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { VirtListRow } from "./VirtListRow";
+import { handlers } from './mocks/handlers';
+import { Build, BuildsApiResponse } from "./VirtList.types";
 
 export default {
     title: "VirtList",
     component: VirtList
 }
 
+// const generateItems = numItems => Array.from( { length: numItems }, _ => ( {
+//     isActive: false,
+//     label: Math.random()
+//         .toString( 36 )
+//         .substr( 2 ),
+// } ) );
 
-export interface StateItem {
-    label: string,
-    isActive: boolean
+const generateItems = async ( amount: number ): Promise<BuildsApiResponse> => {
+    try {
+        const fetchedBuilds = await fetch( "/builds" );
+
+        return fetchedBuilds.json();
+    } catch ( e ) {
+        console.log( e );
+    }
 }
-
-export interface RowData {
-    items: StateItem[],
-    toggleItemActive: ( index: number ) => void
-}
-
-const generateItems = numItems => Array.from( { length: numItems }, _ => ( {
-    isActive: false,
-    label: Math.random()
-        .toString( 36 )
-        .substr( 2 ),
-} ) );
-
 
 const Template = ( { height, width, itemCount, children } ) => {
-    const [items, setItems] = useState( generateItems( itemCount ) );
 
-    const toggleItemActive = ( index: number ) => {
-        setItems( prev => {
-            const item = prev[index];
-            const prevCopy = [...prev];
-            prevCopy[index] = {
-                ...item,
-                isActive: !item.isActive,
-            };
-            return prevCopy;
-        } );
-    }
+    // const toggleItemActive = ( index: number ) => {
+    //     setItems( prev => {
+    //         const item = prev[index];
+    //         const prevCopy = [...prev];
+    //         prevCopy[index] = {
+    //             ...item,
+    //             isActive: !item.isActive,
+    //         };
+    //         return prevCopy;
+    //     } );
+    // }
+
+    const [items, setItems] = useState<BuildsApiResponse>( {} as BuildsApiResponse );
+    const { builds } = items;
+    useEffect( () => {
+        generateItems( itemCount ).then( data => setItems( data ) );
+    }, [] )
+
 
     return (
         <VirtList
             height={ height }
-            items={ items }
-            toggleItemActive={ toggleItemActive }
+            items={ builds || [] }
             width={ width }
             children={ children }
         />
@@ -58,4 +63,9 @@ Example.args = {
     width: 300,
     itemCount: 1000,
     children: VirtListRow
+}
+Example.parameters = {
+    msw: {
+        handlers: handlers
+    }
 }

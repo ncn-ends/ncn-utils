@@ -1,9 +1,6 @@
 import React from "react";
-import { ListChildComponentProps } from "react-window";
-import { RowData } from "./VirtList.stories";
+import { VirtListRowProps } from "./VirtList.types";
 
-type VirtListRowProps = ListChildComponentProps<RowData>
-type VirtListRow = React.FC<VirtListRowProps>;
 
 /**
  * Component representing each row in VirtList.
@@ -12,13 +9,12 @@ type VirtListRow = React.FC<VirtListRowProps>;
  * @param style
  * @constructor
  */
-export const VirtListRow: VirtListRow = ( { data, index, style } ) => {
-    const { items, toggleItemActive } = data;
-    const item = items[index];
+export const VirtListRow: React.FC<VirtListRowProps> = ( { data, index, style } ) => {
+    const { author, title } = data[index];
 
     return (
-        <div onClick={ () => toggleItemActive( index ) } style={ style }>
-            { item.label } is { item.isActive ? 'active' : 'inactive' }
+        <div style={ style }>
+            { author } { title }
         </div>
     );
 }

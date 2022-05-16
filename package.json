@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook",
     "docs:build": "typedoc",
     "docs:open": "xdg-open ./docs/index.html &>/dev/null",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
     "@storybook/addon-links": "^6.4.22",
@@ -36,6 +37,11 @@
     "babel-loader": "^8.2.5",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "msw": "^0.39.2",
+    "msw-storybook-addon": "^1.6.3",
     "typedoc": "^0.22.15"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
