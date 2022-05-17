@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
 import memoize from 'memoize-one';
-import { areEqual, FixedSizeList as List } from 'react-window';
+import { areEqual, FixedSizeList } from 'react-window';
 import { VirtListProps } from "./VirtList.types";
+import { InfiniteScrollWrapper } from "./InfiniteScrollWrapper";
 
 /**
  * This helper function memoizes incoming props,
@@ -15,7 +16,7 @@ const createItemData = memoize( ( args ) => ( {
 } ) );
 
 /**
- * Higher order component representing a virtualized list
+ * Higher order component representing a virtualized list that infinite scrolls.
  *
  * @remarks
  * - Abstraction over FixedSizeList from react-window with some imports from react-virtualized
@@ -36,26 +37,49 @@ const createItemData = memoize( ( args ) => ( {
  * @param height - Height of the list container in px.
  * @param width - Width of the list container in px.
  * @param items - Array of items to be rendered by the list component
+ * @param hasMoreItemsToLoad
+ * @param isNextPageLoading
+ * @param handleLoadingMoreItems
  * @param children - Row component that will be rendered for each item in the list
  */
 export const VirtList: React.FC<VirtListProps> = ( {
-                                                       height,
-                                                       items,
-                                                       width,
-                                                       children
-                                                   } ) => {
+    height,
+    items,
+    width,
+    hasMoreItemsToLoad,
+    isNextPageLoading,
+    handleLoadingMoreItems,
+    children
+} ) => {
     const itemData = createItemData( items );
     const Row = memo( children, areEqual );
 
-    return (
-        <List
+    const List = ( { onItemsRendered, ref, itemCount, isItemLoaded } ) => (
+        <FixedSizeList
             height={ height }
-            itemCount={ items.length }
             itemData={ itemData }
-            itemSize={ 35 }
+            itemSize={ 50 }
             width={ width }
+
+            itemCount={ itemCount }
+            onItemsRendered={ onItemsRendered }
+            ref={ ref }
         >
-            { Row }
-        </List>
-    );
+            { ( args ) => {
+                console.log( args );
+                return Row( { ...args, isItemLoaded } )
+            } }
+        </FixedSizeList>
+    )
+
+    return (
+        <InfiniteScrollWrapper
+            hasMoreItemsToLoad={ hasMoreItemsToLoad }
+            isNextPageLoading={ isNextPageLoading }
+            itemsCount={ itemData.length }
+            handleLoadingMoreItems={ handleLoadingMoreItems }
+        >
+            { List }
+        </InfiniteScrollWrapper>
+    )
 }

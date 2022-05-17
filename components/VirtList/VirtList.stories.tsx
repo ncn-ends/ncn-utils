@@ -41,10 +41,24 @@ const Template = ( { height, width, itemCount, children } ) => {
     // }
 
     const [items, setItems] = useState<BuildsApiResponse>( {} as BuildsApiResponse );
-    const { builds } = items;
+    const [loading, setLoading] = useState<boolean>( false );
+    const { builds, total_pages, current_page } = items;
     useEffect( () => {
+        setLoading( true );
         generateItems( itemCount ).then( data => setItems( data ) );
-    }, [] )
+        setLoading( false );
+    }, [] );
+
+    const handleLoadingMoreItems = () => {
+        generateItems( itemCount ).then( data => setItems( prev => ( {
+            ...prev,
+            builds: [
+                ...prev.builds,
+                data.builds
+            ]
+        } ) ) );
+
+    }
 
 
     return (
@@ -53,6 +67,10 @@ const Template = ( { height, width, itemCount, children } ) => {
             items={ builds || [] }
             width={ width }
             children={ children }
+
+            hasMoreItemsToLoad={ current_page < total_pages }
+            isNextPageLoading={ loading }
+            handleLoadingMoreItems={ handleLoadingMoreItems }
         />
     );
 };

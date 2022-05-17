@@ -7,14 +7,18 @@ import { VirtListRowProps } from "./VirtList.types";
  * @param data
  * @param index
  * @param style
+ * @param isItemLoaded
  * @constructor
  */
-export const VirtListRow: React.FC<VirtListRowProps> = ( { data, index, style } ) => {
+export const VirtListRow: React.FC<VirtListRowProps> = ( { data, index, style, isItemLoaded } ) => {
+    console.log( "virtlistrowstyle", style );
+    let content;
     const { author, title } = data[index];
+    if ( !isItemLoaded( index ) ) {
+        content = "Loading...";
+    } else {
+        content = author + title;
+    }
 
-    return (
-        <div style={ style }>
-            { author } { title }
-        </div>
-    );
+    return <div style={ style }>{ content }</div>;
 }

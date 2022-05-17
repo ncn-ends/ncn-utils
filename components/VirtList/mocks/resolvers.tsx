@@ -12,7 +12,9 @@ export const resolveGetBuilds = ( req, res, ctx ) => {
     return res(
         ctx.status( 200 ),
         ctx.json( {
-            builds: generatedBuilds
+            builds: generatedBuilds,
+            current_page: 1,
+            total_pages: 3
         } )
     )
 }

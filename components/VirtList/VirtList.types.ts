@@ -15,7 +15,7 @@ export interface RowData {
     items: Build[]
 }
 
-export type VirtListRowProps = ListChildComponentProps<RowData>
+export type VirtListRowProps = ListChildComponentProps<RowData> & { isItemLoaded: Function }
 export type VirtListProps = RowData & {
     children: FunctionComponent,
     height: number,
@@ -23,5 +23,7 @@ export type VirtListProps = RowData & {
 };
 
 export interface BuildsApiResponse {
+    total_pages: number,
+    current_page: number,
     builds: Build[]
 }
