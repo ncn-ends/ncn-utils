@@ -21,7 +21,12 @@ https://ncn-ends.github.io/ncn-utils/
 npm install
 ```
 
-2. Initialize MSW
+2. Set up husky hooks
+```
+npm run prepare
+```
+
+4. Initialize MSW
 ```
 npm run msw:build
 ```
