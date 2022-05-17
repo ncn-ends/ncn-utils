@@ -10,13 +10,12 @@
     "msw:build": "npx msw init public/",
     "docs:build": "typedoc",
     "docs:open": "xdg-open ./docs/index.html &>/dev/null",
-    "docs:run": "npm run docs:build && npm run docs:open"
+    "docs:run": "npm run docs:build && npm run docs:open",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/memoize-one": "^5.1.2",
-    "@types/react-window": "^1.8.5",
     "react-window": "^1.8.7",
     "react-window-infinite-loader": "^1.0.7"
   },
@@ -33,10 +32,13 @@
     "@swc/jest": "^0.2.21",
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.5.1",
+    "@types/memoize-one": "^5.1.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@types/react-window": "^1.8.5",
     "@types/storybook__react": "^5.2.1",
     "babel-loader": "^8.2.5",
+    "husky": "^8.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "msw": "^0.39.2",
@@ -45,5 +47,11 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "pre-push": "npm run test"
+    }
   }
 }
