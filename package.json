@@ -4,9 +4,10 @@
   "description": "Collection of my commonly used CSS/JS/TS/React related utils and components.",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook",
+    "test": "jest",
+    "storybook:run": "start-storybook -p 6006 -s public",
+    "storybook:build": "build-storybook",
+    "msw:build": "npx msw init public/",
     "docs:build": "typedoc",
     "docs:open": "xdg-open ./docs/index.html &>/dev/null",
     "docs:run": "npm run docs:build && npm run docs:open"

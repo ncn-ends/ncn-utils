@@ -1,7 +1,7 @@
 import {Portal} from "./Portal";
 
 export default {
-    title: "StdInput",
+    title: "Portal",
     component: Portal
 }
 
