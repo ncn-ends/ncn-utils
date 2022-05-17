@@ -50,13 +50,13 @@ const Template = ( { height, width, itemCount, children } ) => {
     }, [] );
 
     const handleLoadingMoreItems = () => {
-        generateItems( itemCount ).then( data => setItems( prev => ( {
-            ...prev,
-            builds: [
-                ...prev.builds,
-                data.builds
-            ]
-        } ) ) );
+        // generateItems( itemCount ).then( data => setItems( prev => ( {
+        //     ...prev,
+        //     builds: [
+        //         ...prev.builds,
+        //         data.builds
+        //     ]
+        // } ) ) );
 
     }
 

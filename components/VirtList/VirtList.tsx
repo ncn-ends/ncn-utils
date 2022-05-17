@@ -42,7 +42,7 @@ const createItemData = memoize( ( args ) => ( {
  * @param handleLoadingMoreItems
  * @param children - Row component that will be rendered for each item in the list
  */
-export const VirtList: React.FC<VirtListProps> = ( {
+export const VirtList = ( {
     height,
     items,
     width,
