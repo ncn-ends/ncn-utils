@@ -14,6 +14,13 @@ https://ncn-ends.github.io/ncn-utils/
 #### Components
 - `<FluidIncrementingNumber />`
   - Incrementally transitions the number, tapering off at the end
+- Tooltip
+- Timeline
+
+#### Hooks
+- useDetectClickOutside
+  - Detects if a click action was taken outside of a component
+    - useful for modals that should be closed when clicked outside
 
 ### Getting Started: Development
 
