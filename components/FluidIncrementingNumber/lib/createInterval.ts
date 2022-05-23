@@ -6,6 +6,17 @@ type CreateInterval = (
     constantChange: number
 ) => NodeJS.Timer;
 
+/**
+ * Creates a breakpointed interval and returns the interval to be cleared at a future point.
+ *
+ * @param ele - The FIN DOM element.
+ * @param goal - The final number before the breakpointed interval will stop
+ * @param beginValue - Calculated value between initial textCotnent and expected textContent
+ * based on breakpoint parameters which will determine when to begin each breakpointed interval
+ * @param speed - The rate at which the breakpointed interval will increment / decrement
+ * @param constantChange - The numerical value that the FIN content will 
+ * be incremented / decremented by. Default is 1
+ */
 export const createInterval: CreateInterval = (
     ele,
     goal,
@@ -13,18 +24,23 @@ export const createInterval: CreateInterval = (
     speed,
     constantChange
 ) => {
-
     const interval = setInterval( () => {
         const currentContent = Number( ele.textContent );
 
-        if ( currentContent === goal ) clearInterval( interval )
+        /* Escape interval if goal is reached */
+        if ( currentContent === goal ) clearInterval( interval );
+
+
         else {
-            if ( constantChange > 0 && currentContent >= beginValue ) {
-                ele.textContent = String( currentContent + constantChange );
-            }
-            if ( constantChange < 0 && currentContent <= beginValue ) {
-                ele.textContent = String( currentContent + constantChange );
-            }
+            const dir = ( Math.sign( constantChange ) === 1 ) 
+                ? "ascending" 
+                : "descending";
+
+            /** skip DOM modification until content of FIN is within range */
+            if ( dir === "ascending" && currentContent < beginValue ) return;
+            if ( dir === "descending" && currentContent > beginValue ) return;
+            
+            ele.textContent = String( currentContent + constantChange );
         }
     }, speed )
 

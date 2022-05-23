@@ -5,7 +5,12 @@ import { handlers } from "../VirtList/mocks/handlers";
 
 export default {
     title: "FluidIncrementingNumber",
-    component: FluidIncrementingNumber
+    component: FluidIncrementingNumber,
+    parameters: {
+        docs: {
+            page: null,
+        },
+    },
 }
 
 const Template = ( { value: defaultValue, id } ) => {

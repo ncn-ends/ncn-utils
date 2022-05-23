@@ -1,0 +1,25 @@
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {
+    FluidIncrementingNumber
+} from "./FluidIncrementingNumber";
+
+<Meta title={"MDX/Checkbox"} component={FluidIncrementingNumber} />
+
+export const Template = (args) => <FluidIncrementingNumber {...args} />;
+
+# Checkbox
+
+With `MDX`, we can define a story for `Checkbox` right in the middle of our
+Markdown documentation.
+
+<Canvas>
+    <Story
+        name="Unchecked"
+        args={{
+            value: 523,
+            id: "something_id"
+        }}>
+        {Template.bind({})}
+    </Story>
+
+</Canvas>

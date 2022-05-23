@@ -13,7 +13,7 @@ export const defaultBreakpoints: Breakpoint[] = [
         speed: 25
     },
     {
-        begin: .90,
+        begin: .95,
         speed: 100
     },
 ];

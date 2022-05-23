@@ -11,6 +11,19 @@ type BeginIntervalSequence = (
     parameters?: Breakpoint[]
 ) => ( () => NodeJS.Timer )[];
 
+/**
+ * Creates the interval sequence and returns the array of the intervals.
+ * 
+ * @remarks 
+ * - An interval will be created for each breakpoint passed into `breakpoints`.
+ * 
+ * @param ele - The FIN DOM element.
+ * @param startValue - The current value of the content of the FIN DOM element.
+ * @param nextValue - The value the FIN DOM element should ascend / descend to.
+ * @param scale - The constant value that the content should be incremented / derecremented by.
+ * @param breakpoints - Customized breakpoints that dictate the speed and 
+ * transitional steps of the element.
+ */
 export const beginIntervalSequence: BeginIntervalSequence = (
     ele,
     startValue,
@@ -29,8 +42,7 @@ export const beginIntervalSequence: BeginIntervalSequence = (
     const intervalSequence = intervalBreakpoints.map( ( bp, sequencePosition ) => {
         const { speed, beginValue, constantChange } = bp;
         const goal = intervalBreakpoints[sequencePosition + 1]?.beginValue ?? nextValue;
-        // console.log( "goal in sequence", goal );
-
+        
         return () => createInterval(
             ele,
             goal,
