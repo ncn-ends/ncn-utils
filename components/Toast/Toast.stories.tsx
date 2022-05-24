@@ -8,23 +8,34 @@ export default {
 }
 
 const Template = ( {} ) => {
-    const [items, setItems] = useState<any[]>( [1, 2, 3, 4, 5, 6, 7, 8, 9] );
+    const [items, setItems] = useState<string[]>( [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h"
+    ] );
+
+    const AddButton = <button
+        onClick={ () => setItems( prev => [...prev, new Date().toISOString()] ) }
+    >Add Toast Item</button>
 
     return (
         <>
             <DocumentScreen>
-                <button onClick={ () => setItems( prev => [...prev, new Date().toISOString()] ) }>Add Item</button>
+                { AddButton }
             </DocumentScreen>
-            <Toast items={ items } />
+            <Toast
+                items={ items }
+                duration={ 3000 }
+            />
         </>
     )
 }
 
 
-export const Example
-    =
-    Template.bind
-    ( {} )
-;
-Example.args
-    = {}
+export const Example = Template.bind( {} )
+Example.args = {}

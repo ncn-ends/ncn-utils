@@ -10,6 +10,11 @@ https://ncn-ends.github.io/ncn-utils/
 - Using `Typedoc` to generate documentation, but looking for better options
 - Using `husky` for git hooks
 
+### Goals
+- Absolutely minimal 3rd party dependencies
+- Maximum compatibility
+- Maximum reuseability
+
 ### Future Plans
 #### Components
 - Tooltip
