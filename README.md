@@ -12,10 +12,9 @@ https://ncn-ends.github.io/ncn-utils/
 
 ### Future Plans
 #### Components
-- `<FluidIncrementingNumber />`
-  - Incrementally transitions the number, tapering off at the end
 - Tooltip
 - Timeline
+- Toast
 
 #### Hooks
 - useDetectClickOutside
