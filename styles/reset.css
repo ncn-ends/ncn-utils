@@ -339,3 +339,8 @@ template {
 [hidden] {
     display: none;
 }
+
+
+ol {
+    padding: 0;
+}
