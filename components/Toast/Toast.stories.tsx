@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Toast } from "./Toast";
 import { DocumentScreen } from "../DocumentScreen/DocumentScreen";
+import { ToastStateItem } from "./lib/Toast.types";
 
 export default {
     title: "Toast",
@@ -8,29 +9,37 @@ export default {
 }
 
 const Template = ( {} ) => {
-    const [items, setItems] = useState<string[]>( [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h"
+    const [content, setContent] = useState<string>( "" );
+    const [items, setItems] = useState<ToastStateItem[]>( [
+        { content: "a", type: "info" },
+        { content: "b", type: "info" },
+        { content: "c", type: "info" },
+        { content: "d", type: "info" },
+        { content: "e", type: "info" },
+        { content: "f", type: "info" },
+        { content: "g", type: "info" },
+        { content: "h", type: "info" },
     ] );
 
-    const AddButton = <button
-        onClick={ () => setItems( prev => [...prev, new Date().toISOString()] ) }
-    >Add Toast Item</button>
+    const AddButton = ( type ) => <button
+        onClick={ () => setItems( prev => [...prev, {
+            content,
+            type: type
+        }] ) }
+    >{ `Add as ${ type } Toast Item` }</button>
 
     return (
         <>
             <DocumentScreen>
-                { AddButton }
+                <input type="text" onChange={ ( e ) => setContent( e.target.value ) } />
+                { AddButton( "info" ) }
+                { AddButton( "confirmation" ) }
+                { AddButton( "warning" ) }
+                { AddButton( "error" ) }
             </DocumentScreen>
             <Toast
                 items={ items }
-                duration={ 10000 }
+                duration={ 3000 }
             />
         </>
     )

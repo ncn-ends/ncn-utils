@@ -4,9 +4,10 @@ import { ToastItem } from "./lib/ToastItem";
 import React, { useEffect } from "react";
 import { setPropBasedStyling } from "./lib/setPropBasedStyling";
 import { getComponentWrapper } from "./lib/getComponentWrapper";
+import { ToastStateItem } from "./lib/Toast.types";
 
 export interface ToastProps {
-    items: string[]
+    items: ToastStateItem[]
     duration: number
 }
 

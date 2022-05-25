@@ -1,19 +1,16 @@
 import React from "react";
-import { IoCheckmarkSharp } from 'react-icons/io5';
+import { ToastStateItem } from "./Toast.types";
+import { IconDisplay } from "./IconDisplay";
+import { ccl } from "../../../utils/ccl/ccl";
 
-
-export interface ToastItemProps {
-    item: string
-}
-
-type ToastItem = React.FC<ToastItemProps>
+type ToastItem = React.FC<{ item: ToastStateItem }>
 
 export const ToastItem: ToastItem = ( { item } ) => {
     return (
-        <li className="toast-item">
+        <li className={ ccl("toast-item", `toast-item-${item.type}`) }>
             <div className="toast-item-content">
-                <IoCheckmarkSharp className="toast-item-icon" />
-                <p className="toast-item-text">{ item }</p>
+                { IconDisplay( item ) }
+                <p className="toast-item-text">{ item.content }</p>
             </div>
             <div className="toast-progress-bar" />
         </li>

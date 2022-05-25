@@ -6,7 +6,10 @@
     /* 
      * How long the item should be displayed 
     */
-    --toast-accent-color: white;
+    --toast-accent-color-info: white;
+    --toast-accent-color-confirmation: green;
+    --toast-accent-color-error: red;
+    --toast-accent-color-warning: orange;
     --toast-item-duration: 3000ms;
     
     
@@ -19,7 +22,7 @@
     -webkit-mask-image: var(--toast-transparent-mask);
     mask-image: var(--toast-transparent-mask);
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: inherit;
 }
 
@@ -32,7 +35,6 @@
 :where(.toast-item) {
     list-style: none;
     border: 1px solid black;
-    border-left: 3px solid var(--toast-accent-color);
     padding: 1rem;
     padding-bottom: 0;
     margin: 1rem;
@@ -48,6 +50,26 @@
     animation-timing-function: linear;
 }
 
+:where(.toast-item-info) {
+    border-left: 3px solid var(--toast-accent-color-info);
+}
+
+:where(.toast-item-confirmation) {
+    border-left: 3px solid var(--toast-accent-color-confirmation);
+}
+
+:where(.toast-item-error) {
+    border-left: 3px solid var(--toast-accent-color-error);
+}
+
+:where(.toast-item-warning) {
+    border-left: 3px solid var(--toast-accent-color-warning);
+}
+
+:where(.toast-item-custom) {
+    border-left: 3px solid var(--toast-accent-color-custom);
+}
+
 :where(.toast-item-content) {
     display: flex;
     align-items: center;
@@ -55,9 +77,25 @@
 
 :where(.toast-item-icon) {
     margin-right: 2rem;
-    color: var(--toast-accent-color);
     font-size: 150%;
 }
+
+:where(.toast-icon-confirmation) {
+    color: var(--toast-accent-color-confirmation);
+}
+
+:where(.toast-icon-error) {
+    color: var(--toast-accent-color-error);
+}
+
+:where(.toast-icon-warning) {
+    color: var(--toast-accent-color-warning);
+}
+
+:where(.toast-icon-warning) {
+    color: var(--toast-accent-color-warning);
+}
+
 
 :where(.toast-progress-bar) {
     width: calc(100% + 2rem);
