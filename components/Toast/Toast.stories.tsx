@@ -30,7 +30,7 @@ const Template = ( {} ) => {
             </DocumentScreen>
             <Toast
                 items={ items }
-                duration={ 3000 }
+                duration={ 10000 }
             />
         </>
     )

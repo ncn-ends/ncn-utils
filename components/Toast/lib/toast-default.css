@@ -1,12 +1,15 @@
-:root {
+:where(.toast-container) {
     --toast-transparent-mask: linear-gradient(to bottom, rgba(0, 0, 0, 1.0), 85%, transparent);
     --toast-component-width: 30rem;
     --toast-component-height: 45rem;
-
+    
+    /* 
+     * How long the item should be displayed 
+    */
     --toast-accent-color: white;
-}
-
-:where(.toast-container) {
+    --toast-item-duration: 3000ms;
+    
+    
     position: absolute;
     top: 0;
     right: 0;
@@ -38,7 +41,7 @@
     flex-direction: column;
 
 
-    animation-delay: 3000ms;
+    animation-delay: var(--toast-item-duration);
     animation-duration: 500ms;
     animation-name: toast-item-fade-out;
     animation-fill-mode: forwards;
@@ -64,7 +67,7 @@
     margin-top: 1rem;
     border-radius: 2px;
     height: 2px;
-    animation-duration: 3000ms;
+    animation-duration: var(--toast-item-duration);
     animation-name: toast-progress-bar-animation;
     animation-fill-mode: forwards;
     animation-timing-function: linear;

@@ -2,10 +2,12 @@ import './toast-overrides.css'
 import './lib/toast-default.css'
 import { ToastItem } from "./lib/ToastItem";
 import React, { useEffect } from "react";
+import { setPropBasedStyling } from "./lib/setPropBasedStyling";
+import { getComponentWrapper } from "./lib/getComponentWrapper";
 
 export interface ToastProps {
     items: string[]
-    duration: 3000
+    duration: number
 }
 
 export type Toast = React.FC<ToastProps>
@@ -22,11 +24,21 @@ export const Toast: Toast = ( {
 } ) => {
 
     useEffect( () => {
-        
+        const cssValidDuration = duration + "ms";
+        const ele = getComponentWrapper();
+
+        const styles = {
+            duration: cssValidDuration
+        }
+        const stylesMap = {
+            "duration": "--toast-item-duration"
+        }
+
+        setPropBasedStyling( ele, styles, stylesMap );
     }, [items] )
 
     return (
-        <aside className="toast-container">
+        <aside className="toast-container" data-toast-container>
             <ol className="toast-list">
                 { items.map( item => <ToastItem item={ item } /> ) }
             </ol>
