@@ -31,10 +31,18 @@
     border: 1px solid black;
     border-left: 3px solid var(--toast-accent-color);
     padding: 1rem;
+    padding-bottom: 0;
     margin: 1rem;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+
+
+    animation-delay: 3000ms;
+    animation-duration: 500ms;
+    animation-name: toast-item-fade-out;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 :where(.toast-item-content) {
@@ -46,4 +54,48 @@
     margin-right: 2rem;
     color: var(--toast-accent-color);
     font-size: 150%;
+}
+
+:where(.toast-progress-bar) {
+    width: calc(100% + 2rem);
+    background-color: red;
+    margin-left: -1rem;
+    margin-bottom: -1px;
+    margin-top: 1rem;
+    border-radius: 2px;
+    height: 2px;
+    animation-duration: 3000ms;
+    animation-name: toast-progress-bar-animation;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    opacity: 50%;
+    
+}
+
+/*
+ * Used to represent the visual effect of the progress bar
+ */
+@keyframes toast-progress-bar-animation {
+    from {
+        width: calc(100% + 2rem);
+    }
+    
+    to {
+        width: 0;
+    }
+}
+
+/*
+ * Used to fade out item once the duration is over
+ */
+@keyframes toast-item-fade-out {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
 }

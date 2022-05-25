@@ -1,3 +1,4 @@
+import './toast-overrides.css'
 import './lib/toast-default.css'
 import { ToastItem } from "./lib/ToastItem";
 import React, { useEffect } from "react";
