@@ -10,16 +10,7 @@ export default {
 
 const Template = ( {} ) => {
     const [content, setContent] = useState<string>( "" );
-    const [items, setItems] = useState<ToastStateItem[]>( [
-        { content: "a", type: "info" },
-        { content: "b", type: "info" },
-        { content: "c", type: "info" },
-        { content: "d", type: "info" },
-        { content: "e", type: "info" },
-        { content: "f", type: "info" },
-        { content: "g", type: "info" },
-        { content: "h", type: "info" },
-    ] );
+    const [items, setItems] = useState<ToastStateItem[]>( [] );
 
     const AddButton = ( type ) => <button
         onClick={ () => setItems( prev => [...prev, {
@@ -40,6 +31,8 @@ const Template = ( {} ) => {
             <Toast
                 items={ items }
                 duration={ 3000 }
+                fadeOutDuration={ 500 }
+                setItems={ setItems }
             />
         </>
     )

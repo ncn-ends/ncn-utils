@@ -2,15 +2,17 @@
     --toast-transparent-mask: linear-gradient(to bottom, rgba(0, 0, 0, 1.0), 85%, transparent);
     --toast-component-width: 30rem;
     --toast-component-height: 45rem;
-    
-    /* 
-     * How long the item should be displayed 
-    */
     --toast-accent-color-info: white;
     --toast-accent-color-confirmation: green;
     --toast-accent-color-error: red;
     --toast-accent-color-warning: orange;
+    
+    /* 
+     * Prop based styling
+     * - These are defaults that will be changed with JS potentially
+    */
     --toast-item-duration: 3000ms;
+    --toast-fade-out-duration: 500ms;
     
     
     position: absolute;
@@ -44,7 +46,7 @@
 
 
     animation-delay: var(--toast-item-duration);
-    animation-duration: 500ms;
+    animation-duration: var(--toast-fade-out-duration);
     animation-name: toast-item-fade-out;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
